@@ -9,12 +9,12 @@
 </div>
 <div class="notetaking-info row">
   <div id="requesters" class="col-xs-6">
-    <p ng-repeat="requester in getRequesters(course)">
+    <p ng-repeat="requester in course.requesters">
       {{requester.name}}
     </p>
   </div>
   <div id="notetakers" class="col-xs-6">
-    <p ng-repeat="notetaker in getNotetakers(course)">
+    <p ng-repeat="notetaker in course.notetakers">
       {{notetaker.name}}
     </p>
   </div>
