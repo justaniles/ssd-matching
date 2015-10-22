@@ -20,8 +20,8 @@
 								</header>
 								<form action="#" method="post">
 									<div>
-										<b>Student Information</b></br>
-										<form>
+										<b>Student Information</b></br></br>
+									
 
 											<div class="row">
 												<div >
@@ -37,6 +37,22 @@
 														<option value="3" >Fall 2016</option>
 													</select>
 												</div> 
+												</br></br></br>
+												<div id="courseTable">
+													<select class="customselect" > 
+														<option value=""  disabled selected>Subject</option>
+														<option value="1" >MATH</option>
+														<option value="2" >ENGR</option>
+														<option value="3" >PHYSI</option>
+													</select>
+													<input class="customselect" type="text" name="number" placeholder="Course #" />
+													<input class="customselect" type="text" name="crn" placeholder="CRN" />
+													<input class="customselect" type="text" name="instructor" placeholder="Instructor" />
+													<input type="text" name="instructorEmail" placeholder="Instructor's Email" />
+													<input id="add" href="#" type="submit" value="+" />
+
+													
+												</div>
 												<div id="courseTable">
 													<select class="customselect" > 
 														<option value=""  disabled selected>Subject</option>
@@ -53,10 +69,11 @@
 													
 												</div>
 												<div class="12u$">
+												</br>
 													<input type="submit" value="Submit" />
 												</div>
 											</div>
-										</form>
+										
 									</div>
 								</form>
 							</article>
