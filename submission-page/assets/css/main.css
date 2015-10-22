@@ -850,6 +850,18 @@
 	   appearance: none;
 	}
 
+		.customselect2 {
+	    width: 170px;
+	    overflow: hidden;
+	}
+
+	.customselect2 select {
+	   width: 100px;
+	   -moz-appearance: none;
+	   -webkit-appearance: none;
+	   appearance: none;
+	}
+
 
 	form label {
 		display: block;
