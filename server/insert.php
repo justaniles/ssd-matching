@@ -17,12 +17,12 @@ $course = mysqli_real_escape_string($link, $_POST['course']);
 $crn = mysqli_real_escape_string($link, $_POST['crn']);
 $email = mysqli_real_escape_string($link, $_POST['email']); 
 
-$database = 'notetaker';
+$table = 'notetaker';
 
 
 
 // attempt insert query execution
-$sql = "INSERT INTO $database (FIRSTNAME, LASTNAME, DEPARTMENT, COURSE, CRN, EMAIL) VALUES ('$first_name', '$last_name', '$dpt', '$course', '$crn', '$email')";
+$sql = "INSERT INTO $table (FIRSTNAME, LASTNAME, DEPARTMENT, COURSE, CRN, EMAIL) VALUES ('$first_name', '$last_name', '$dpt', '$course', '$crn', '$email')";
 if(mysqli_query($link, $sql)){
    //echo "Records added successfully.";
 } else{
