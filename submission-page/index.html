@@ -37,7 +37,7 @@
 														<option value="3" >Fall 2016</option>
 													</select>
 												</div> 
-												<div>
+												<div id="courseTable">
 													<select class="customselect" > 
 														<option value=""  disabled selected>Subject</option>
 														<option value="1" >MATH</option>
@@ -48,7 +48,7 @@
 													<input class="customselect" type="text" name="crn" placeholder="CRN" />
 													<input class="customselect" type="text" name="instructor" placeholder="Instructor" />
 													<input type="text" name="instructorEmail" placeholder="Instructor's Email" />
-													<input type="submit" value="+" />
+													<input id="add" href="#" type="submit" value="+" />
 
 													
 												</div>
@@ -70,11 +70,36 @@
 
 			</div>
 
+
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/skel-viewport.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			
+			<script type="text/javascript">
+				$(document).ready(function()
+				{
+				  new_row="<select class="customselect" > 
+														<option value=""  disabled selected>Subject</option>
+														<option value="1" >MATH</option>
+														<option value="2" >ENGR</option>
+														<option value="3" >PHYSI</option>
+													</select>
+													<input class="customselect" type="text" name="number" placeholder="Course #" />
+													<input class="customselect" type="text" name="crn" placeholder="CRN" />
+													<input class="customselect" type="text" name="instructor" placeholder="Instructor" />
+													<input type="text" name="instructorEmail" placeholder="Instructor Email" />
+													<input id="add" href="#" type="submit" value="+" />";
+				  $("#add").click(function()
+				  {    
+				    $("#courseTable").append(new_row);
+				    return false;
+
+				  }
+				}
+			</script>
 
 	</body>
 </html>
