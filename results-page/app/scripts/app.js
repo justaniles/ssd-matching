@@ -8,10 +8,7 @@
  *
  * Main module of the application.
  */
-angular
-  .module('resultsPageApp', [
-    'ngRoute'
-  ])
+angular.module('ResultsPageApp', ['ngRoute'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
