@@ -16,7 +16,7 @@
 								<header>
 									<h2>SSD | Note Taker & Student Accomodation Application</h2>
 									<b>* = Required Fields </b></br>
-			Thank you for volunteering to take notes.   Services for Students with Disabilities will add you to our roster.   Should we need a volunteer note taker for one of your classes, we will contact you.</p>
+									Thank you for volunteering to take notes.   Services for Students with Disabilities will add you to our roster.   Should we need a volunteer note taker for one of your classes, we will contact you.</p>
 								</header>
 								<form id="student" method="post" action="#" method="post" enctype='application/json'>
 									<div>
@@ -45,31 +45,17 @@
 												</div> 
 												</br></br></br>
 												<div id="courseTable">
-													<select id="subject" class="customselect" > 
-														<option value=""  disabled selected>Subject</option>
-														<option value="1" >MATH</option>
-														<option value="2" >ENGR</option>
-														<option value="3" >PHYSI</option>
-													</select>
-													<input class="customselect" type="text" name="number" placeholder="Course #" />
-													<input class="customselect" type="text" name="crn" placeholder="CRN" />
-													<input class="customselect2" type="text" name="instructor" placeholder="Instructor" />
-													<input type="text" name="instructorEmail" placeholder="Instructor's Email" />
-
-													
-												</div>
-												<div id="courseTable">
 													<select class="customselect" > 
 														<option value=""  disabled selected>Subject</option>
 														<option value="1" >MATH</option>
 														<option value="2" >ENGR</option>
-														<option value="3" >PHYSI</option>
+														<option value="3" >PHYS</option>
 													</select>
 													<input class="customselect" type="text" name="number" placeholder="Course #" />
 													<input class="customselect" type="text" name="crn" placeholder="CRN" />
 													<input class="customselect2" type="text" name="instructor" placeholder="Instructor" />
 													<input type="text" name="instructorEmail" placeholder="Instructor's Email" />
-													<input id="add" href="#" type="submit" value="+" />
+													<input id="add" type="reset" value="+" onclick="add_fields();" />
 
 													
 												</div>
@@ -89,7 +75,7 @@
 							<li>&copy; HCI Janx. 🖖</li></li>
 						</ul>
 					</div>
-
+dag is cool
 			</div>
 
 
@@ -98,6 +84,18 @@
 			<script src="assets/js/skel-viewport.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<script type="text/javascript">
+				var room = 1;
+				function add_fields() {
+				    room++;
+				    var objTo = document.getElementById('courseTable')
+				    var divtest = document.createElement("div");
+				    divtest.innerHTML = '<div class="label">Room ' + room +':</div><div class="content"><span>Width: <input type="text" style="width:48px;" name="width[]" value="" /><small>(ft)</small> X</span><span>Length: <input type="text" style="width:48px;" namae="length[]" value="" /><small>(ft)</small></span></div>';
+				    
+				    objTo.appendChild(divtest)
+}
+			</script>
 
 
 			<script type="text/javascript">
