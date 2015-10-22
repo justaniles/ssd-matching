@@ -4,7 +4,7 @@ _HCI Capstone project that will allow the VT SSD department to match SSD student
 
 **Front Sign Up Page** (WIP)
 
-![]({{site.baseurl}}/https://linx.li/selif/iqiap1b3.png)
+![UI](https://linx.li/selif/iqiap1b3.png)
 
 TODO:
 - Connect Backend to UI
