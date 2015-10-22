@@ -4,8 +4,13 @@
 .notetaking-course {
   cursor: pointer;
   padding: 30px;
-  margin-bottom: 15px;
   background-color: #eee;
+  // border: 1px solid #222;
+
+  &.expanded {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
 }
 
 .course-info {
