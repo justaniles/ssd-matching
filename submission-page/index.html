@@ -29,12 +29,12 @@
 													<input id="nameLast" type="text" name="nameLast" placeholder="Your Last Name" />
 													<input id="email" class="customselect2" type="text" name="email" placeholder="Your Email" />
 							
-													<select  id="semester" style="margin-left: 5em;" name="semester" placeholder="Semester" > 
-														<option value="" selected disabled>Semester</option>
+													<!--  <select  id="semester" style="margin-left: 5em;" name="semester" placeholder="Semester" > 
+														<option value="" selected disabled>Semester</option> 
 														<option value="1" >Fall 2015</option>
 														<option value="2" >Spring 2016</option>
 														<option value="3" >Fall 2016</option>
-													</select>
+													</select> -->
 
 												</div>
 												<div >
@@ -90,18 +90,7 @@
 				    room++;
 				    var objTo = document.getElementById('courseTable')
 				    var divtest = document.createElement("div");
-				    divtest.innerHTML = '
-													<select class="customselect" > 
-														<option value=""  disabled selected>Subject</option>
-														<option value="1" >MATH</option>
-														<option value="2" >ENGR</option>
-														<option value="3" >PHYS</option>
-													</select>
-													<input class="customselect" type="text" name="number" placeholder="Course #" />
-													<input class="customselect" type="text" name="crn" placeholder="CRN" />
-													<input class="customselect2" type="text" name="instructor" placeholder="Instructor" />
-													<input type="text" name="instructorEmail" placeholder="Instructor's Email" />
-													<input id="add" type="reset" value="+" onclick="add_fields();" />";
+				    divtest.innerHTML = '<select class="customselect" > <option value=""  disabled selected>Subject</option><option value="1" >MATH</option><option value="2" >ENGR</option><option value="3" >PHYS</option></select> <input class="customselect" type="text" name="number" placeholder="Course #" /> <input class="customselect" type="text" name="crn" placeholder="CRN" /> <input class="customselect2" type="text" name="instructor" placeholder="Instructor" /> <input type="text" name="instructorEmail" placeholder="Instructors Email" />';
 				    
 				    objTo.appendChild(divtest)
 }
