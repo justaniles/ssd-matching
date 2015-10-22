@@ -1,21 +1,39 @@
-<h3>{{course.subject}}{{course.courseNumber}}</h3>
-<div class="notetaking-info-header row">
-  <div class="col-xs-6">
-    <h4>Requesters:</h4>
-  </div>
-  <div class="col-xs-6">
-    <h4>Note-Takers:</h4>
+<div class="course-info row">
+  <h3 class="course-name col-xs-4">
+    {{courseInfo.subject}}{{courseInfo.courseNumber}}
+  </h3>
+  <div class="course-summary col-xs-8 row" ng-show="showingSummary">
+    <div class="col-xs-4">
+      <h4 class="course-summary-text">
+        Requesters: {{courseInfo.requesters.length}}
+      </h4>
+    </div>
+    <div class="col-xs-8">
+      <h4 class="course-summary-text">
+        Notetakers: {{courseInfo.notetakers.length}}
+      </h4>
+    </div>
   </div>
 </div>
-<div class="notetaking-info row">
-  <div id="requesters" class="col-xs-6">
-    <p ng-repeat="requester in getRequesters(course)">
-      {{requester.name}}
-    </p>
+<div class="course-detailed" ng-hide="showingSummary">
+  <div class="notetaking-info-header row">
+    <div class="col-xs-6">
+      <h4>Requesters:</h4>
+    </div>
+    <div class="col-xs-6">
+      <h4>Note-Takers:</h4>
+    </div>
   </div>
-  <div id="notetakers" class="col-xs-6">
-    <p ng-repeat="notetaker in getNotetakers(course)">
-      {{notetaker.name}}
-    </p>
+  <div class="notetaking-info row">
+    <div id="requesters" class="col-xs-6">
+      <p ng-repeat="requester in courseInfo.requesters">
+        {{requester.name}}
+      </p>
+    </div>
+    <div id="notetakers" class="col-xs-6">
+      <p ng-repeat="notetaker in courseInfo.notetakers">
+        {{notetaker.name}}
+      </p>
+    </div>
   </div>
 </div>

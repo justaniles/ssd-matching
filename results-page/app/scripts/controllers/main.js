@@ -22,40 +22,45 @@ angular.module('ResultsPageApp')
       generateCourse("SBIO", 3256, 84683)
     ];
 
-    $scope.requesters = generateRequesters(10);
-    $scope.notetakers = generateRequesters(5);
     $scope.courses = courses;
-    $scope.getRequesters = function getRequesters(curCourse) {
-      var takingClass = [];
-      $scope.requesters.forEach(function(requester, i, array) {
-        if (requester.courses.indexOf(curCourse) !== -1) {
-          takingClass.push(requester);
-        }
-      });
-      return takingClass;
-    };
-    $scope.getNotetakers = function getNotetakers(curCourse) {
-      var takingClass = [];
-      $scope.notetakers.forEach(function(notetaker, i, array) {
-        if (notetaker.courses.indexOf(curCourse) !== -1) {
-          takingClass.push(notetaker);
-        }
-      });
-      return takingClass;
-    };
+    $scope.requesters = generateRequesters(10);
+    $scope.notetakers = generateNotetakers(5);
 
     function generateRequesters(count) {
       var requesters = [];
       for (var i = 0; i < count; i++) {
         var genFirstName = randomElement(firstNames),
             genLastName = randomElement(lastNames);
-        requesters.push({
+        // choose random course to add to
+        randomElement($scope.courses).requesters.push({
           name: genFirstName + " " + genLastName,
-          email: genFirstName.toLowerCase() + genLastName.toLowerCase() + "@vt.edu",
-          courses: randomElement(courses, 1)
+          email: genFirstName.toLowerCase() + genLastName.toLowerCase() + "@vt.edu"
         });
+        // requesters.push({
+        //   name: genFirstName + " " + genLastName,
+        //   email: genFirstName.toLowerCase() + genLastName.toLowerCase() + "@vt.edu",
+        //   courses: randomElement(courses, 1)
+        // });
       }
       return requesters;
+    }
+    function generateNotetakers(count) {
+      var notetaker = [];
+      for (var i = 0; i < count; i++) {
+        var genFirstName = randomElement(firstNames),
+            genLastName = randomElement(lastNames);
+        // choose random course to add to
+        randomElement($scope.courses).notetakers.push({
+          name: genFirstName + " " + genLastName,
+          email: genFirstName.toLowerCase() + genLastName.toLowerCase() + "@vt.edu"
+        });
+        // requesters.push({
+        //   name: genFirstName + " " + genLastName,
+        //   email: genFirstName.toLowerCase() + genLastName.toLowerCase() + "@vt.edu",
+        //   courses: randomElement(courses, 1)
+        // });
+      }
+      return notetaker;
     }
     function generateCourse(subject, courseNumber, crn) {
       return {
@@ -65,7 +70,9 @@ angular.module('ResultsPageApp')
         instructor: {
           name: "Joe",
           email: "Shmoe"
-        }
+        },
+        requesters: [],
+        notetakers: []
       };
     }
     function randomElement(array, count) {
