@@ -21,21 +21,26 @@
 								<form id="student" method="post" action="#" method="post" enctype='application/json'>
 									<div>
 										<b>Student Information</b></br></br>
-									
 
+									
 											<div class="row">
 												<div >
 													<input id="nameFirst" type="text" name="nameFirst" placeholder="Your First Name" />
-												</div>
-												<div >
 													<input id="nameLast" type="text" name="nameLast" placeholder="Your Last Name" />
-									
+																						
 													<select  id="semester" style="margin-left: 5em;" name="semester" placeholder="Semester" > 
 														<option value="" selected disabled>Semester</option>
 														<option value="1" >Fall 2015</option>
 														<option value="2" >Spring 2016</option>
 														<option value="3" >Fall 2016</option>
 													</select>
+
+												</div>
+												<div >
+													<input name="studentType" type="radio" value="SSD Student">SSD Student
+													<input name="studentType" type="radio" value="Note Taker">Note Taker
+
+
 												</div> 
 												</br></br></br>
 												<div id="courseTable">
