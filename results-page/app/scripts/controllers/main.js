@@ -25,7 +25,7 @@ angular.module('ResultsPageApp')
     $scope.courses = courses;
     $scope.requesters = generateRequesters(10);
     $scope.notetakers = generateNotetakers(5);
-    
+
     function generateRequesters(count) {
       var requesters = [];
       for (var i = 0; i < count; i++) {

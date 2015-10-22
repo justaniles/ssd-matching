@@ -2,10 +2,24 @@
 // endbower
 
 .notetaking-course {
-  padding: 15px;
+  cursor: pointer;
+  padding: 30px;
   margin-bottom: 15px;
   background-color: #eee;
 }
+
+.course-info {
+  display: flex;
+  align-items: center;
+
+  .course-name {
+    margin: 0px;
+  }
+  .course-summary-text {
+    margin: 0px;
+  }
+}
+
 
 .needs-notetakers {
   background-color: #E57373;
