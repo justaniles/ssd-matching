@@ -1,0 +1,31 @@
+// bower:scss
+// endbower
+
+.notetaking-course {
+  cursor: pointer;
+  padding: 30px;
+  background-color: #eee;
+  // border: 1px solid #222;
+
+}
+.expanded {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.course-info {
+  display: flex;
+  align-items: center;
+
+  .course-name {
+    margin: 0px;
+  }
+  .course-summary-text {
+    margin: 0px;
+  }
+}
+
+
+.needs-notetakers {
+  background-color: #E57373;
+}
