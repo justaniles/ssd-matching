@@ -42,24 +42,21 @@ while($row = mysqli_fetch_assoc($query))
 
 		$is_notetaker = $row['IS_NOTETAKER'];
 		$newstudent = array('firstName' => $row['FIRSTNAME'], 'lastName' => $row['LASTNAME'], 'email' => $row['EMAIL']);
-		$studentString = json_encode($newstudent);
 
 		//if is a requester, add to requester list
 		if ($is_notetaker == "0")
 		{
-			array_push($requesters, $studentString);
+			array_push($requesters, $newstudent);
 		}
 		else
 		{
-			array_push($notetakers, $studentString);
+			array_push($notetakers, $newstudent);
 		}
 	}
 	//new crn
 	else if ($prevCRN != $crn)
 	{
-		$requesterString = json_encode($requesters);
-		$notetakerString = json_encode($notetakers);
-		$class = array('crn' => $prevCRN, 'department' => $department, 'courseNumber' => $course, "instructor" => $instructor, "instructorEmail" => $instructor_email, 'requesters' => $requesterString, 'notetakers' => $notetakerString);
+		$class = array('crn' => $prevCRN, 'department' => $department, 'courseNumber' => $course, "instructor" => $instructor, "instructorEmail" => $instructor_email, 'requesters' => $requesters, 'notetakers' => $notetakers);
 
 		array_push($classes, $class);
 
@@ -77,16 +74,15 @@ while($row = mysqli_fetch_assoc($query))
 
 		$is_notetaker = $row['IS_NOTETAKER'];
 		$newstudent = array('firstName' => $row['FIRSTNAME'], 'lastName' => $row['LASTNAME'], 'email' => $row['EMAIL']);
-		$studentString = json_encode($newstudent);
 
 		//if is a requester, add to requester list
 		if ($is_notetaker == "0")
 		{
-			array_push($requesters, $studentString);
+			array_push($requesters, $newstudent);
 		}
 		else
 		{
-			array_push($notetakers, $studentString);
+			array_push($notetakers, $newstudent);
 		}
 	}
 	//same crn
@@ -94,25 +90,26 @@ while($row = mysqli_fetch_assoc($query))
 	{
 		$is_notetaker = $row['IS_NOTETAKER'];
 		$newstudent = array('firstName' => $row['FIRSTNAME'], 'lastName' => $row['LASTNAME'], 'email' => $row['EMAIL']);
-		$studentString = json_encode($newstudent);
 
 		//if is a requester, add to requester list
 		if ($is_notetaker == '0')
 		{
-			array_push($requesters, $studentString);
+			array_push($requesters, $newstudent);
 		}
 		else
 		{
-			array_push($notetakers, $studentString);
+			array_push($notetakers, $newstudent);
 		}
 	}
 }
 
-$class = array('crn' => $prevCRN, 'department' => $department, 'courseNumber' => $course, "instructor" => $instructor, "instructorEmail" => $instructor_email, 'requesters' => $requesterString, 'notetakers' => $notetakerString);
+$class = array('crn' => $prevCRN, 'department' => $department, 'courseNumber' => $course, "instructor" => $instructor, "instructorEmail" => $instructor_email, 'requesters' => $requesters, 'notetakers' => $notetakers);
 array_push($classes, $class);
 
-echo str_replace("\\", "", json_encode($classes));
- 
+//$string = str_replace("\"","\\\"", json_encode($classes));
+$string = json_encode($classes);
+echo $string; 
+
 // close connection
 mysqli_close($link);
 
