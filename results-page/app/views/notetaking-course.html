@@ -1,6 +1,6 @@
 <div class="course-info row">
   <h3 class="course-name col-xs-4">
-    {{courseInfo.subject}}{{courseInfo.courseNumber}}
+    {{courseInfo.department}}{{courseInfo.courseNumber}}_{{courseInfo.crn}}
   </h3>
   <div class="course-summary col-xs-8 row" ng-show="showingSummary">
     <div class="col-xs-4">
@@ -27,12 +27,12 @@
   <div class="notetaking-info row">
     <div id="requesters" class="col-xs-6">
       <p ng-repeat="requester in courseInfo.requesters">
-        {{requester.name}}
+        {{requester.firstName}} {{requester.lastName}} ({{requester.email}})
       </p>
     </div>
     <div id="notetakers" class="col-xs-6">
       <p ng-repeat="notetaker in courseInfo.notetakers">
-        {{notetaker.name}}
+        {{notetaker.firstName}} {{notetaker.lastName}} ({{notetaker.email}})
       </p>
     </div>
   </div>
