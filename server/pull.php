@@ -1,21 +1,21 @@
-
-<head>
-	<link rel="stylesheet" type="text/css" href="style.css" />
-</head>
-
 <?php
 
-// Connect to mysql db at localhost to db ssd
-$link = mysqli_connect("localhost", "root", "password", "ssd");
+//Server connection parameters
+$server = "localhost";
+$user = "root";
+$password = "password";
+$database = "ssd";
 
+// Connect to server
+$link = mysqli_connect($server, $user, $password, $database);
+ 
 // Check connection
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
-<<<<<<< HEAD
 
-$statement = "SELECT * FROM student ORDER BY student.CRN, student.COURSE_NUMBER";
-$query = mysqli_query($link, $statement);
+$query = "SELECT * FROM student ORDER BY student.CRN, student.COURSE_NUMBER";
+$results = mysqli_query($link, $query);
 
 $prevCRN = -1;
 $department = '';
@@ -27,11 +27,10 @@ $requesters = [];
 $notetakers = [];
 $classes = [];
 
-
-while($row = mysqli_fetch_assoc($query))
+while($row = mysqli_fetch_assoc($results))
 {
 	$crn = $row['CRN'];
-
+	
 	//first call
 	if ($prevCRN == -1)
 	{
@@ -42,7 +41,7 @@ while($row = mysqli_fetch_assoc($query))
 		$instructor_email = $row['INSTRUCTOR_EMAIL'];
 
 		$is_notetaker = $row['IS_NOTETAKER'];
-		$newstudent = array('firstName' => $row['FIRSTNAME'], 'lastName' => $row['LASTNAME'], 'email' => $row['EMAIL']);
+		$newstudent = array('firstName' => $row['FIRSTNAME'], 'lastName' => $row['LASTNAME'], 'email' => $row['EMAIL'], 'isAssigned' => $row['IS_ASSIGNED']);
 
 		//if is a requester, add to requester list
 		if ($is_notetaker == "0")
@@ -74,7 +73,7 @@ while($row = mysqli_fetch_assoc($query))
 		$instructor_email = $row['INSTRUCTOR_EMAIL'];
 
 		$is_notetaker = $row['IS_NOTETAKER'];
-		$newstudent = array('firstName' => $row['FIRSTNAME'], 'lastName' => $row['LASTNAME'], 'email' => $row['EMAIL']);
+		$newstudent = array('firstName' => $row['FIRSTNAME'], 'lastName' => $row['LASTNAME'], 'email' => $row['EMAIL'], 'isAssigned' => $row['IS_ASSIGNED']);
 
 		//if is a requester, add to requester list
 		if ($is_notetaker == "0")
@@ -90,7 +89,7 @@ while($row = mysqli_fetch_assoc($query))
 	else
 	{
 		$is_notetaker = $row['IS_NOTETAKER'];
-		$newstudent = array('firstName' => $row['FIRSTNAME'], 'lastName' => $row['LASTNAME'], 'email' => $row['EMAIL']);
+		$newstudent = array('firstName' => $row['FIRSTNAME'], 'lastName' => $row['LASTNAME'], 'email' => $row['EMAIL'], 'isAssigned' => $row['IS_ASSIGNED']);
 
 		//if is a requester, add to requester list
 		if ($is_notetaker == '0')
@@ -109,66 +108,15 @@ array_push($classes, $class);
 
 //$string = str_replace("\"","\\\"", json_encode($classes));
 $string = json_encode($classes);
-echo $string;
+echo $string; 
 
 // close connection
 mysqli_close($link);
 
-=======
-
-//Get the the radio button if the user wants to see all matched
-//unmatched or both
-$matched = mysqli_real_escape_string($link, $_POST['match']);
-if ($matched == "both")
-{
-	echo "<h2 style=\"color:green;\">MATCHED TABLE</h2>";
-}
-
-if ($matched == "matched" || $matched == "both")
-{
-	$statement = "SELECT student.DEPARTMENT_S, student.COURSE_S, student.CRN_S, notetaker.FIRSTNAME_N, notetaker.LASTNAME_N, notetaker.EMAIL_N, student.FIRSTNAME_S, student.LASTNAME_S, student.EMAIL_S FROM notetaker JOIN student on notetaker.CRN_N = student.CRN_S";
-	$query = mysqli_query($link, $statement);
-
-	echo "<table><tr><td>Department</td><td>Course</td><td>CRN</td><td>Notetaker's First Name</td><td>Notetaker's Last Name</td><td>Notetaker's Email</td><td>Student's First Name</td><td>Student's Last Name</td><td>Student's Email</td></tr>";
-
-	while($row = mysqli_fetch_assoc($query))
-	{
-	    echo "<tr><td>";
-	    echo $row['DEPARTMENT_S'];
-	    echo "</td><td>";
-	    echo $row['COURSE_S'];
-	    echo "</td><td>";
-	    echo $row['CRN_S'];
-	    echo "</td><td>";
-	    echo $row['FIRSTNAME_N'];
-	    echo "</td><td>";
-	    echo $row['LASTNAME_N'];
-	    echo "</td><td>";
-	    echo $row['EMAIL_N'];
-	    echo "</td><td>";
-	    echo $row['FIRSTNAME_S'];
-	    echo "</td><td>";
-	    echo $row['LASTNAME_S'];
-	    echo "</td><td>";
-	    echo $row['EMAIL_S'];
-	    echo "</td></tr>";
-	}
-	echo "</table>";
-}
-
-if ($matched == "both")
-{
-	echo "<h2 style=\"color:red;\">UNMATCHED TABLE</h2>";
-}
-
-// close connection
-mysqli_close($link);
 ?>
 
 
 
 
 
->>>>>>> server
 
-?>
