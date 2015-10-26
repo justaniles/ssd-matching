@@ -10,71 +10,10 @@
 angular.module('ResultsPageApp')
   .controller('MainCtrl', function ($scope) {
 
-    var firstNames = ["John", "Jim", "Joe", "Ruth",
-      "Timothy", "Daniel", "Andrew", "Sally"];
-    var lastNames = ["Smith", "Skinkle", "Wright", "Fernandez",
-      "Madder", "Minten", "Mortin", "McCreary"];
-    var courses = [
-      generateCourse("MATH", 1096, 43956),
-      generateCourse("CS", 3425, 65737),
-      generateCourse("GEO", 1123, 80934),
-      generateCourse("MUS", 3434, 63463),
-      generateCourse("SBIO", 3256, 84683)
-    ];
+    var courses = [{"crn":"12345","department":"CS","courseNumber":"4104","instructor":"Bill Bo","instructorEmail":"help@vt.edu","requesters":[{"firstName":"Dag","lastName":"Yeshiwas","email":"dag@vt.edu"},{"firstName":"Marissa","lastName":"Frederick","email":"fred@vt.edu"}],"notetakers":[{"firstName":"Cody","lastName":"Cahoon","email":"c@vt.edu"},{"firstName":"Heather","lastName":"Wise","email":"wise@vt.edu"}]},{"crn":"12346","department":"CS","courseNumber":"4114","instructor":"Pill Po","instructorEmail":"pill@vt.edu","requesters":[{"firstName":"Justin","lastName":"Niles","email":"n@vt.edu"}],"notetakers":[]},{"crn":"14445","department":"MATH","courseNumber":"1000","instructor":"Cat Po","instructorEmail":"cat@vt.edu","requesters":[],"notetakers":[{"firstName":"John","lastName":"Myhre","email":"j@vt.edu"}]},{"crn":"65432","department":"ECON","courseNumber":"1005","instructor":"Bat Po","instructorEmail":"bat@vt.edu","requesters":[{"firstName":"Michael","lastName":"Marchio","email":"mm@vt.edu"}],"notetakers":[]}];
 
     $scope.courses = courses;
-    $scope.requesters = generateRequesters(10);
-    $scope.notetakers = generateNotetakers(5);
 
-    function generateRequesters(count) {
-      var requesters = [];
-      for (var i = 0; i < count; i++) {
-        var genFirstName = randomElement(firstNames),
-            genLastName = randomElement(lastNames);
-        // choose random course to add to
-        randomElement($scope.courses).requesters.push({
-          name: genFirstName + " " + genLastName,
-          email: genFirstName.toLowerCase() + genLastName.toLowerCase() + "@vt.edu"
-        });
-        // requesters.push({
-        //   name: genFirstName + " " + genLastName,
-        //   email: genFirstName.toLowerCase() + genLastName.toLowerCase() + "@vt.edu",
-        //   courses: randomElement(courses, 1)
-        // });
-      }
-      return requesters;
-    }
-    function generateNotetakers(count) {
-      var notetaker = [];
-      for (var i = 0; i < count; i++) {
-        var genFirstName = randomElement(firstNames),
-            genLastName = randomElement(lastNames);
-        // choose random course to add to
-        randomElement($scope.courses).notetakers.push({
-          name: genFirstName + " " + genLastName,
-          email: genFirstName.toLowerCase() + genLastName.toLowerCase() + "@vt.edu"
-        });
-        // requesters.push({
-        //   name: genFirstName + " " + genLastName,
-        //   email: genFirstName.toLowerCase() + genLastName.toLowerCase() + "@vt.edu",
-        //   courses: randomElement(courses, 1)
-        // });
-      }
-      return notetaker;
-    }
-    function generateCourse(subject, courseNumber, crn) {
-      return {
-        subject: subject,
-        courseNumber: courseNumber,
-        crn: crn,
-        instructor: {
-          name: "Joe",
-          email: "Shmoe"
-        },
-        requesters: [],
-        notetakers: []
-      };
-    }
     function randomElement(array, count) {
       if (typeof count === "undefined" || count === 0) {
         return array[Math.floor(Math.random() * array.length)];
