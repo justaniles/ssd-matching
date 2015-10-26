@@ -1,5 +1,11 @@
 <?php
 
+//Server connection parameters
+$server = "localhost";
+$user = "root";
+$password = "password";
+$database = "ssd";
+
 //Gets the student information 
 $first = $_GET["firstname"];
 $last = $_GET["lastname"];
@@ -12,8 +18,8 @@ $instr_email = $_GET["instructorEmail"];
 $notetaker = $_GET["isNotetaker"];
 $assigned = $_GET["isAssigned"];
 
-// Connect to mysql db at localhost to db ssd
-$link = mysqli_connect("localhost", "root", "password", "ssd");
+// Connect to server
+$link = mysqli_connect($server, $user, $password, $database);
  
 // Check connection
 if($link === false){
@@ -39,4 +45,3 @@ if (mysqli_query($link, $query)) {
 }
 mysqli_close($link);
 ?>
-
