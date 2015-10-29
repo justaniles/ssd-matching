@@ -25,15 +25,23 @@
     </div>
   </div>
   <div class="notetaking-info row">
-    <div id="requesters" class="col-xs-6">
-      <p ng-repeat="requester in courseInfo.requesters">
-        {{requester.firstName}} {{requester.lastName}} ({{requester.email}})
-      </p>
+
+    <div class="requesters col-xs-6">
+      <div class="requester" ng-repeat="requester in courseInfo.requesters">
+        <input type="checkbox" ng-model="requester.isAssigned" ng-click="assignmentToggle(requester, $event)"/>
+        <p>
+          {{requester.firstName}} {{requester.lastName}} ({{requester.email}})
+        </p>
+      </div>
     </div>
-    <div id="notetakers" class="col-xs-6">
-      <p ng-repeat="notetaker in courseInfo.notetakers">
-        {{notetaker.firstName}} {{notetaker.lastName}} ({{notetaker.email}})
-      </p>
+    <div class="notetakers col-xs-6">
+      <div class="notetaker" ng-repeat="notetaker in courseInfo.notetakers">
+        <input type="checkbox" ng-model="notetaker.isAssigned" ng-click="assignmentToggle(requester, $event)"/>
+        <p>
+          {{notetaker.firstName}} {{notetaker.lastName}} ({{notetaker.email}})
+        </p>
+      </div>
     </div>
+
   </div>
 </div>
