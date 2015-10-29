@@ -1,12 +1,36 @@
 // bower:scss
 // endbower
 
+$dank: #eee;
+
+.navbar-options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .nav {
+    width: 50%;
+  }
+  .search {
+    display: inline-block;
+    margin: 0px;
+    width: 50%;
+    text-align: right;
+
+    .search-control {
+      border: 1px #e7e7e7 solid;
+      padding: 10px;
+      border-radius: 4px;
+      width: 20em;
+    }
+  }
+}
+
 .notetaking-course {
   cursor: pointer;
   padding: 30px;
-  background-color: #eee;
+  background-color: $dank;
   // border: 1px solid #222;
-
 }
 .expanded {
   margin-top: 15px;
@@ -23,6 +47,10 @@
   .course-summary-text {
     margin: 0px;
   }
+}
+
+.requester > *, .notetaker > * {
+  display: inline-block;
 }
 
 

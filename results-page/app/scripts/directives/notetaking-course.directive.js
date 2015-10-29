@@ -9,6 +9,11 @@ angular.module("ResultsPageApp")
     link: function($scope, $element, $attrs) {
 
       $scope.showingSummary = true;
+      $scope.assignmentToggle = function assignmentToggle(
+      requester, event) {
+        event.stopPropagation();
+
+      }
 
       $element.on("click", function toggleIsSummary(event) {
         event.preventDefault();
