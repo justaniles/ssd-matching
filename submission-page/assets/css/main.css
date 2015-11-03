@@ -1339,31 +1339,6 @@
 				padding: 7px;
 			}
 
-		/* Nav */
-
-			#nav {
-				text-align: center;
-				margin: 6px 0 8px 0;
-			}
-
-				#nav a {
-					font-size: 2em;
-					opacity: 0.5;
-					outline: 0;
-					width: 1.5em;
-					height: 1.5em;
-					line-height: 1.35em;
-					margin: 0 0.25em 0 0.25em;
-				}
-
-					#nav a:active {
-						opacity: 1.0;
-					}
-
-					#nav a span {
-						display: none;
-					}
-
 		/* Panels */
 
 			#main {
