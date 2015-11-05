@@ -28,18 +28,18 @@
 
     <div class="requesters col-xs-6">
       <div class="requester" ng-repeat="requester in courseInfo.requesters">
-        <input type="checkbox" ng-model="requester.isAssigned" ng-click="assignmentToggle(requester, $event)"/>
-        <p>
+        <label ng-click="assignmentToggle(requester, $event)">
+          <input type="checkbox" ng-model="requester.isAssigned"/>
           {{requester.firstName}} {{requester.lastName}} ({{requester.email}})
-        </p>
+        </label>
       </div>
     </div>
     <div class="notetakers col-xs-6">
       <div class="notetaker" ng-repeat="notetaker in courseInfo.notetakers">
-        <input type="checkbox" ng-model="notetaker.isAssigned" ng-click="assignmentToggle(requester, $event)"/>
-        <p>
+        <label>
+          <input type="checkbox" ng-model="notetaker.isAssigned" ng-click="assignmentToggle(requester, $event)"/>
           {{notetaker.firstName}} {{notetaker.lastName}} ({{notetaker.email}})
-        </p>
+        </label>
       </div>
     </div>
 
