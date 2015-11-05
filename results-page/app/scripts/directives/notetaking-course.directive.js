@@ -1,6 +1,6 @@
 angular.module("ResultsPageApp")
 
-.directive("notetakingCourse", function($timeout) {
+.directive("notetakingCourse", function($timeout, managerService) {
   return {
     restrict: "C",
     scope: {
@@ -9,17 +9,30 @@ angular.module("ResultsPageApp")
     link: function($scope, $element, $attrs) {
 
       $scope.showingSummary = true;
-      $scope.assignmentToggle = function assignmentToggle(
-      requester, event) {
-        event.stopPropagation();
 
+      $scope.assignmentToggle = function assignmentToggle(requester) {
+        console.log(JSON.stringify(requester));
       }
 
-      $element.on("click", function toggleIsSummary(event) {
-        event.preventDefault();
+      $scope.toggleIsSummary = function toggleIsSummary(event) {
         $timeout(function() {
           $scope.showingSummary = !$scope.showingSummary;
         });
+      };
+
+      /**
+       * [closeAll listener]
+       *
+       * Listen for closeAll event (probably triggered by user clicking
+       * background) so that this course will close and show summary.
+       *
+       * @param  {Boolean} closeValue - Should this be showing summary?
+       */
+      managerService.on("closeAll", function(closeValue) {
+        if (closeValue !== true) {
+          return;
+        }
+        $scope.showingSummary = true;
       });
 
     },

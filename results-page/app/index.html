@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="ResultsPageApp">
+  <body ng-app="ResultsPageApp" ng-controller="AppController">
 
     <!-- Add your site or application content here -->
     <div class="header">
@@ -47,8 +47,10 @@
       </div>
     </div>
 
-    <div class="container">
-    <div ng-view=""></div>
+    <div class="main" ng-click="closeAllCourses()">
+      <div class="container">
+        <div ng-view=""></div>
+      </div>
     </div>
 
     <div class="footer">
@@ -68,9 +70,13 @@
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/about.js"></script>
+
+    <script src="scripts/controllers/app.controller.js"></script>
+    <script src="scripts/controllers/main.controller.js"></script>
+
     <script src="scripts/directives/notetaking-course.directive.js"></script>
+
+    <script src="scripts/services/manager-service.factory.js"></script>
     <!-- endbuild -->
 </body>
 </html>

@@ -1,17 +1,17 @@
 angular.module("ResultsPageApp")
 
-.factory("managerService", function($timeout) {
+.service("managerService", function($timeout) {
 
   var events = {};
 
-  function on(e, fn) {
+  this.on = function on(e, fn) {
     if (!events.hasOwnProperty(e)) {
       events[e] = [];
     }
     events[e].push(fn);
   }
 
-  function off(e, fn) {
+  this.off = function off(e, fn) {
     if (!events.hasOwnProperty(e)) {
       return;
     }
@@ -21,13 +21,15 @@ angular.module("ResultsPageApp")
     }
   }
 
-  function trigger(e, newValue) {
+  this.trigger = function trigger(e, newValue) {
     if (!events.hasOwnProperty(e)) {
       return;
     }
-    for (var i = 0; i < events[e].length; i++) {
-      events[e][i].call(this, newValue);
-    }
+    $timeout(function(internalVal) {
+      for (var i = 0; i < events[e].length; i++) {
+        events[e][i].call(this, internalVal);
+      }
+    }.bind(this, newValue));
   }
 
 });
