@@ -45,6 +45,7 @@
 												</div> 
 												</br></br></br>
 												<div id="courseTable">
+													<div>
 													<select class="customselect" > 
 														<option value=""  disabled selected>Subject</option>
 														<option value="1" >MATH</option>
@@ -55,7 +56,8 @@
 													<input class="customselect" type="text" name="crn" placeholder="CRN" />
 													<input class="customselect2" type="text" name="instructor" placeholder="Instructor" />
 													<input type="text" name="instructorEmail" placeholder="Instructor's Email" />
-													<input id="add" type="reset" value="+" onclick="add_fields();" />
+													<input id="add" type="button" value="+" onclick="add_fields();" />
+													</div>
 
 													
 												</div>
@@ -85,14 +87,16 @@
 			<script src="assets/js/main.js"></script>
 
 			<script type="text/javascript">
-				var room = 1;
-				function add_fields() {
-				    room++;
-				    var objTo = document.getElementById('courseTable')
-				    var divtest = document.createElement("div");
-				    divtest.innerHTML = '<select class="customselect" > <option value=""  disabled selected>Subject</option><option value="1" >MATH</option><option value="2" >ENGR</option><option value="3" >PHYS</option></select> <input class="customselect" type="text" name="number" placeholder="Course #" /> <input class="customselect" type="text" name="crn" placeholder="CRN" /> <input class="customselect2" type="text" name="instructor" placeholder="Instructor" /> <input type="text" name="instructorEmail" placeholder="Instructors Email" />';
+				// var room = 1;
+				function add_fields()  {
+				    // room++;
+				    // var objTo = document.getElementById('courseTable')
+				    // // var divtest = document.createElement("div");
+				    // divtest.innerHTML = '<div><select class="customselect" > <option value=""  disabled selected>Subject</option><option value="1" >MATH</option><option value="2" >ENGR</option><option value="3" >PHYS</option></select> <input class="customselect" type="text" name="number" placeholder="Course #" /> <input class="customselect" type="text" name="crn" placeholder="CRN" /> <input class="customselect2" type="text" name="instructor" placeholder="Instructor" /> <input type="text" name="instructorEmail" placeholder="Instructors Email" /></div>';
 				    
-				    objTo.appendChild(divtest)
+				    var entry = $('<div><select class="customselect" > <option value=""  disabled selected>Subject</option><option value="1" >MATH</option><option value="2" >ENGR</option><option value="3" >PHYS</option></select> <input class="customselect" type="text" name="number" placeholder="Course #" /> <input class="customselect" type="text" name="crn" placeholder="CRN" /> <input class="customselect2" type="text" name="instructor" placeholder="Instructor" /> <input type="text" name="instructorEmail" placeholder="Instructors Email" /></div>');
+
+				    $("#courseTable").append(entry);
 }
 			</script>
 
