@@ -32,7 +32,7 @@ ng-click="$event.stopPropagation()">
 
       <div class="requesters col-xs-6">
         <div class="requester" ng-repeat="requester in courseInfo.requesters">
-          <label ng-click="assignmentToggle(requester)">
+          <label class="toggleAssigned" ng-click="assignmentToggle(requester, false)">
             <input type="checkbox" ng-model="requester.isAssigned"/>
             {{requester.firstName}} {{requester.lastName}} ({{requester.email}})
           </label>
@@ -40,8 +40,8 @@ ng-click="$event.stopPropagation()">
       </div>
       <div class="notetakers col-xs-6">
         <div class="notetaker" ng-repeat="notetaker in courseInfo.notetakers">
-          <label>
-            <input type="checkbox" ng-model="notetaker.isAssigned" ng-click="assignmentToggle(requester, $event)"/>
+          <label class="toggleAssigned" ng-click="assignmentToggle(notetaker, true)">
+            <input type="checkbox" ng-model="notetaker.isAssigned"/>
             {{notetaker.firstName}} {{notetaker.lastName}} ({{notetaker.email}})
           </label>
         </div>
