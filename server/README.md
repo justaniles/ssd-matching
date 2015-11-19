@@ -14,3 +14,8 @@ students.json
 
 old
 - contains old html files (unused) and old insert.php (replaced by index.php)
+
+
+TODO
+- publish to csv
+- erase database
