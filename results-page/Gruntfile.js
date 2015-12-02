@@ -31,6 +31,13 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: appConfig,
 
+    'gh-pages': {
+      options: {
+        base: 'dist'
+      },
+      src: ['**']
+    },
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
@@ -352,7 +359,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'commaApp',
+          module: 'ResultsPageApp',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },
@@ -395,7 +402,8 @@ module.exports = function (grunt) {
             '.htaccess',
             '*.html',
             'images/{,*/}*.{webp}',
-            'styles/fonts/{,*/}*.*'
+            'styles/fonts/{,*/}*.*',
+            'views/*'
           ]
         }, {
           expand: true,
