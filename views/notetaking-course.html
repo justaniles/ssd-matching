@@ -1,0 +1,53 @@
+<div class="course-wrapper"
+ng-class="{'needs-notetakers': courseInfo.notetakers.length == 0, 'expanded': !showingSummary}"
+ng-click="$event.stopPropagation()">
+
+  <div class="course-info row" ng-click="toggleIsSummary()">
+    <h3 class="course-name col-xs-4">
+      {{courseInfo.department}}{{courseInfo.courseNumber}}_{{courseInfo.crn}}
+    </h3>
+    <div class="course-summary col-xs-8 row" ng-show="showingSummary">
+      <div class="col-xs-4">
+        <h4 class="course-summary-text">
+          Requesters: {{courseInfo.requesters.length}}
+        </h4>
+      </div>
+      <div class="col-xs-8">
+        <h4 class="course-summary-text">
+          Notetakers: {{courseInfo.notetakers.length}}
+        </h4>
+      </div>
+    </div>
+  </div>
+  <div class="course-detailed" ng-hide="showingSummary">
+    <div class="notetaking-info-header row">
+      <div class="col-xs-6">
+        <h4>Requesters:</h4>
+      </div>
+      <div class="col-xs-6">
+        <h4>Note-Takers:</h4>
+      </div>
+    </div>
+    <div class="notetaking-info row">
+
+      <div class="requesters col-xs-6">
+        <div class="requester" ng-repeat="requester in courseInfo.requesters">
+          <label class="toggleAssigned" ng-click="assignmentToggle(requester, false)">
+            <input type="checkbox" ng-model="requester.isAssigned"/>
+            {{requester.firstName}} {{requester.lastName}} ({{requester.email}})
+          </label>
+        </div>
+      </div>
+      <div class="notetakers col-xs-6">
+        <div class="notetaker" ng-repeat="notetaker in courseInfo.notetakers">
+          <label class="toggleAssigned" ng-click="assignmentToggle(notetaker, true)">
+            <input type="checkbox" ng-model="notetaker.isAssigned"/>
+            {{notetaker.firstName}} {{notetaker.lastName}} ({{notetaker.email}})
+          </label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
